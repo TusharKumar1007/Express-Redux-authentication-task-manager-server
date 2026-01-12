@@ -19,8 +19,8 @@ app.post("/auth/register", async (req, res) => {
 
 app.post("/auth/login", async (req, res) => {
   try {
-    const { userName, password } = req.body;
-    const result = await loginUser(userName, password);
+    const { email, password } = req.body;
+    const result = await loginUser(email, password);
     res.json({ message: "Welcome back", result });
   } catch (e) {
     res.status(500).json({ error: e.message });

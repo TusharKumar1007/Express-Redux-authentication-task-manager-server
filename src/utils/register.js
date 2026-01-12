@@ -20,8 +20,9 @@ export const registerUser = async (userName, password, email) => {
       throw new Error("Please fill all inputs");
     }
     const db = await readDb();
+    const isEmailExists = db.find((user) => user.email === email);
     const isUserNameTaken = db.find((user) => user.userName === userName);
-    if (isUserNameTaken) {
+    if (isUserNameTaken || isEmailExists) {
       throw new Error("User Name already taken");
     }
     password = await hashPassword(password);
@@ -29,10 +30,10 @@ export const registerUser = async (userName, password, email) => {
     const resUserObj = prepareUserObj(userName, password, email);
     db.push(resUserObj);
     writeDb(db);
-    const { id, userName: user_name,createdAt } = resUserObj;
+    const { id, userName: user_name, createdAt } = resUserObj;
     const token = await generateToken({ id, user_name });
 
-    return { id, userName, email,createdAt, token };
+    return { id, userName, email, createdAt, token };
   } catch (e) {
     throw new Error(e);
   }
