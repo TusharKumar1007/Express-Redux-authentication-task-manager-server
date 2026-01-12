@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import { readDb } from "./readJsonFile.js";
+import { generateToken } from "./jwt.js";
 
 export async function loginUser(email, password) {
   const db = await readDb();
@@ -10,8 +11,9 @@ export async function loginUser(email, password) {
     if (!res) {
       throw new Error("Invalid credientials, Register your self if not");
     }
-    const { id, email } = foundUser;
-    return { id, email };
+    const { id, email, userName: user_name } = foundUser;
+    const token = await generateToken({ id, user_name });
+    return { user: { id, email, userName: user_name }, token };
   } else {
     throw new Error("It seems you are not registred, Please register first");
   }

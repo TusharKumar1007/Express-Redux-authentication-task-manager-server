@@ -33,7 +33,7 @@ export const registerUser = async (userName, password, email) => {
     const { id, userName: user_name, createdAt } = resUserObj;
     const token = await generateToken({ id, user_name });
 
-    return { id, userName, email, createdAt, token };
+    return { user: { id, userName, email, createdAt }, token };
   } catch (e) {
     throw new Error(e);
   }
