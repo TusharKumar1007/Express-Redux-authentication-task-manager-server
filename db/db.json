@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1768234742403,
+    "email": "jhon@wrestler.com",
+    "userName": "jhon_cena",
+    "password": "$2b$12$UWf16iQAUvLtv3vfF0kF5OD1dz1ejumxAhPa2CnRCDwZUW/BhIfA.",
+    "createdAt": "2026-01-12T16:19:02.403Z",
+    "updatedAt": "2026-01-12T16:19:02.405Z"
+  },
+  {
+    "id": 1768234928676,
+    "email": "brock@wwe.io",
+    "userName": "brock",
+    "password": "$2b$12$nzSCptPpEV1LhWELzP0ROOlXNM/nKgnN6Jgw8efWceF4KysiMPO3q",
+    "createdAt": "2026-01-12T16:22:08.676Z",
+    "updatedAt": "2026-01-12T16:22:08.676Z"
+  },
+  {
+    "id": 1768235354249,
+    "email": "deadman@wwe.io",
+    "userName": "undertacker",
+    "password": "$2b$12$ifvMnSQlQh7wdP3KWMFRBuThjkkFLsIU3Y7UMaQgBtUqvq1Laovya",
+    "createdAt": "2026-01-12T16:29:14.249Z",
+    "updatedAt": "2026-01-12T16:29:14.251Z"
+  }
+]
