@@ -11,6 +11,6 @@ app.use("/auth", authRouter);
 
 app.use("/auth", authRouter);
 
-app.use("/habit", habitRouter);
+app.use("/habits", habitRouter);
 
 export default app;
