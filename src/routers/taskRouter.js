@@ -1,6 +1,11 @@
 import { Router } from "express";
 import { authenticateToken } from "../middleware/auth.js";
-import { addTask, getMyTasks, removeMyTask } from "../utils/task.js";
+import {
+  addTask,
+  getMyTasks,
+  removeMyTask,
+  updateMyTask,
+} from "../utils/task.js";
 
 const router = Router();
 
@@ -34,11 +39,28 @@ router.post("/addTask", async (req, res) => {
   }
 });
 
-router.put("/removeHabit", async (req, res) => {
+router.put("/removeTask", async (req, res) => {
   try {
     const { id, user_name } = req.user;
-    const { habitId } = req.body;
-    removeMyTask(id, habitId);
+    const { taskId } = req.body;
+    removeMyTask(id, taskId);
+
+    res
+      .json({
+        message: "updated tasks successfully",
+        user: { id, user_name },
+      })
+      .status(201);
+  } catch (e) {
+    res.status(401).json({ error: e.message });
+  }
+});
+
+router.put("/updateTask", async (req, res) => {
+  try {
+    const { id, user_name } = req.user;
+    const { taskId, newTitle } = req.body;
+    updateMyTask(id, parseInt(taskId), newTitle);
 
     res
       .json({
