@@ -1,4 +1,7 @@
 import express from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 import habitRouter from "./src/routers/habitRouter.js";
 import authRouter from "./src/routers/authRouter.js";

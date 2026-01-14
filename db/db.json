@@ -76,5 +76,14 @@
         "title": "swimming"
       }
     ]
+  },
+  {
+    "id": 1768387524239,
+    "email": "islam@mma.io",
+    "userName": "islam",
+    "password": "$2b$12$jVdYJBlNsAAVaOYl/RniD.ZNQser5AKIs4Yo4g12QT3jGB3xi1mIe",
+    "createdAt": "2026-01-14T10:45:24.239Z",
+    "updatedAt": "2026-01-14T10:45:24.239Z",
+    "habits": []
   }
 ]

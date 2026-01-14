@@ -1,7 +1,8 @@
 import { jwtVerify, SignJWT } from "jose";
 import { createSecretKey } from "crypto";
 
-const secret = "applepieorange_7890Banana";
+const secret = `${process.env.JWT_SECRET}`;
+// const secret = process.env.JWT_SECRET;
 
 export const generateToken = (payload) => {
   const secretKey = createSecretKey(secret, "utf-8");
