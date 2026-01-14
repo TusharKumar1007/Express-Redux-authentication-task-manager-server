@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { authenticateToken } from "../middleware/auth.js";
-import { addHabit, getMyHabits, removeMyHabit } from "../utils/habit.js";
+import { addTask, getMyTasks, removeMyTask } from "../utils/task.js";
 
 const router = Router();
 
@@ -10,20 +10,20 @@ router.get("/", async (req, res) => {
   try {
     const { id, user_name } = req.user;
 
-    const habit = await getMyHabits(id);
+    const task = await getMyTasks(id);
 
-    res.json({ user_name, habits: habit });
+    res.json({ user_name, tasks: task });
   } catch (e) {
     res.status(401).json({ error: "bad request" });
   }
 });
 
-router.post("/addHabit", async (req, res) => {
+router.post("/addTask", async (req, res) => {
   try {
     const { id } = req.user;
     const { habit } = req.body;
 
-    const addedHabitStatus = addHabit(id, habit);
+    const addedHabitStatus = addTask(id, habit);
     if (!addedHabitStatus) {
       res.status(500).json({ message: "Unable to add habit" });
     }
@@ -38,11 +38,11 @@ router.put("/removeHabit", async (req, res) => {
   try {
     const { id, user_name } = req.user;
     const { habitId } = req.body;
-    removeMyHabit(id, habitId);
+    removeMyTask(id, habitId);
 
     res
       .json({
-        message: "updated habits successfully",
+        message: "updated tasks successfully",
         user: { id, user_name },
       })
       .status(201);

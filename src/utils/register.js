@@ -11,7 +11,7 @@ const prepareUserObj = (userName, password, email) => {
     password: password,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    habits: [],
+    tasks: [],
   };
 };
 

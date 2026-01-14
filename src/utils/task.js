@@ -4,26 +4,26 @@ function prepareHabitObj(habit) {
   return { id: Date.now(), title: habit };
 }
 
-export const addHabit = async (id, habit) => {
+export const addTask = async (id, habit) => {
   const db = await readDb();
   const index = db.findIndex((user) => user.id === id);
-  db[index].habits.push(prepareHabitObj(habit));
+  db[index].tasks.push(prepareHabitObj(habit));
   writeDb(db);
 };
 
-export const getMyHabits = async (id) => {
+export const getMyTasks = async (id) => {
   const db = await readDb();
   const user = db.find((user) => user.id === id);
-  return user.habits;
+  return user.tasks;
 };
 
-export const removeMyHabit = async (userId, habitId) => {
+export const removeMyTask = async (userId, habitId) => {
   const db = await readDb();
   const userIdx = db.findIndex((user) => user.id === userId);
-  const updatedHabits = db[userIdx].habits.filter(
+  const updatedHabits = db[userIdx].tasks.filter(
     (habit) => habit.id !== habitId
   );
 
-  db[userIdx].habits = updatedHabits;
+  db[userIdx].tasks = updatedHabits;
   writeDb(db);
 };

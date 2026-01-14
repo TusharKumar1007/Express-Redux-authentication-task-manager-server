@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-import habitRouter from "./src/routers/habitRouter.js";
+import taskRouter from "./src/routers/taskRouter.js";
 import authRouter from "./src/routers/authRouter.js";
 import accountRouter from "./src/routers/accountRouter.js";
 
@@ -15,7 +15,7 @@ app.use("/auth", authRouter);
 
 app.use("/auth", authRouter);
 
-app.use("/habits", habitRouter);
+app.use("/tasks", taskRouter);
 
 app.use("/account", accountRouter);
 export default app;
