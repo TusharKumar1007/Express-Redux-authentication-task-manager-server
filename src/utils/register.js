@@ -31,11 +31,11 @@ export const registerUser = async (userName, password, email) => {
     const resUserObj = prepareUserObj(userName, password, email);
     db.push(resUserObj);
     writeDb(db);
-    const { id, userName: user_name, createdAt } = resUserObj;
+    const { id, userName: user_name, createdAt, tasks } = resUserObj;
     const token = await generateToken({ id, user_name });
 
-    return { user: { id, userName, email, createdAt }, token };
+    return { user: { id, userName, email, createdAt, tasks }, token };
   } catch (e) {
-    throw new Error(e);
+    throw new Error(e.message);
   }
 };

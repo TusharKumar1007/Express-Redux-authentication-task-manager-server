@@ -1,0 +1,20 @@
+import { Router } from "express";
+import { authenticateToken } from "../middleware/auth.js";
+import { getMyTasks } from "../utils/task.js";
+
+const router = Router();
+
+router.use(authenticateToken);
+
+router.get("/", async (req, res) => {
+  const { id } = req.user;
+  if (!id) {
+    res.json({});
+    return;
+  }
+  const { userName, tasks } = await getMyTasks(id);
+
+  res.json({ userName, tasks });
+});
+
+export default router;

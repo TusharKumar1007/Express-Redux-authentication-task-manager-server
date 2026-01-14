@@ -7,19 +7,35 @@ const router = Router();
 router.post("/register", async (req, res) => {
   const { userName, password, email } = req.body;
   try {
-    const result = await registerUser(userName, password, email);
+    const { user, token } = await registerUser(userName, password, email);
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 2000 * 60 * 60 * 24,
+    });
 
-    res.json({ message: "User succesfully registered", result });
+    res.json({ message: "User succesfully registered", user });
   } catch (e) {
-    res.status(500).json({ message: e.message });
+    res.status(500).json({ error: e.message });
   }
 });
 
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    const result = await loginUser(email, password);
-    res.json({ message: "Welcome back", result });
+
+    const { user, token } = await loginUser(email, password);
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 2000 * 60 * 60 * 24,
+    });
+
+    
+    res.json({ message: "Welcome back", user });
   } catch (e) {
     res.status(401).json({ error: e.message });
   }

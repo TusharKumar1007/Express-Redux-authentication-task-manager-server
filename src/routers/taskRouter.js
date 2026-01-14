@@ -26,29 +26,33 @@ router.get("/", async (req, res) => {
 router.post("/addTask", async (req, res) => {
   try {
     const { id } = req.user;
-    const { habit } = req.body;
+    const { taskTitle } = req.body;
 
-    const addedHabitStatus = addTask(id, habit);
-    if (!addedHabitStatus) {
+    const { taskId, title, done, goEditMode, createdAt, updatedAt } =
+      await addTask(id, taskTitle);
+
+    if (!taskId) {
       res.status(500).json({ message: "Unable to add habit" });
+      return;
     }
 
-    res.json({ message: "successfully Added habit" });
+    res.json({ taskId, title, done, goEditMode, createdAt, updatedAt });
   } catch (e) {
     res.status(401).json({ error: "bad request" });
   }
 });
 
-router.put("/removeTask", async (req, res) => {
+router.delete("/removeTask", async (req, res) => {
   try {
     const { id, user_name } = req.user;
     const { taskId } = req.body;
-    removeMyTask(id, taskId);
+
+    const updatedTasks = await removeMyTask(id, taskId);
 
     res
       .json({
         message: "updated tasks successfully",
-        user: { id, user_name },
+        updatedTasks,
       })
       .status(201);
   } catch (e) {
@@ -60,12 +64,12 @@ router.put("/updateTask", async (req, res) => {
   try {
     const { id, user_name } = req.user;
     const { taskId, newTitle } = req.body;
-    updateMyTask(id, parseInt(taskId), newTitle);
+    const updatedTasks = await updateMyTask(id, parseInt(taskId), newTitle);
 
     res
       .json({
         message: "updated tasks successfully",
-        user: { id, user_name },
+        updatedTasks,
       })
       .status(201);
   } catch (e) {
