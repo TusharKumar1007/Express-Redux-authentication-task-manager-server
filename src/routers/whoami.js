@@ -7,14 +7,18 @@ const router = Router();
 router.use(authenticateToken);
 
 router.get("/", async (req, res) => {
-  const { id } = req.user;
-  if (!id) {
-    res.json({});
-    return;
-  }
-  const { userName, tasks } = await getMyTasks(id);
+  try {
+    const { id } = req.user;
+    if (!id) {
+      res.json({});
+      return;
+    }
+    const { userName, tasks } = await getMyTasks(id);
 
-  res.json({ userName, tasks });
+    res.json({ userName, tasks });
+  } catch (e) {
+    res.status(404).json({ error: e.message });
+  }
 });
 
 export default router;

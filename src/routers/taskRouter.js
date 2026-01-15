@@ -5,6 +5,7 @@ import {
   getMyTasks,
   removeMyTask,
   updateMyTask,
+  toggleDone
 } from "../utils/task.js";
 
 const router = Router();
@@ -65,6 +66,24 @@ router.put("/updateTask", async (req, res) => {
     const { id, user_name } = req.user;
     const { taskId, newTitle } = req.body;
     const updatedTasks = await updateMyTask(id, parseInt(taskId), newTitle);
+
+    res
+      .json({
+        message: "updated tasks successfully",
+        updatedTasks,
+      })
+      .status(201);
+  } catch (e) {
+    res.status(401).json({ error: e.message });
+  }
+});
+
+router.put("/toogleTaskDone", async (req, res) => {
+  try {
+    const { id, user_name } = req.user;
+    const { taskId, isdone } = req.body;
+    
+    const updatedTasks = await toggleDone(id, parseInt(taskId), isdone);
 
     res
       .json({

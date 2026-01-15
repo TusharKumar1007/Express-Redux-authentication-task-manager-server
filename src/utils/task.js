@@ -76,3 +76,24 @@ export const updateMyTask = async (userId, taskId, newTitle) => {
     throw new Error(e);
   }
 };
+
+export const toggleDone = async (userId, taskId, isdone) => {
+  try {
+
+    
+    const db = await readDb();
+    const userIdx = db.findIndex((user) => user.id === userId);
+    const taskToUpdateId = db[userIdx].tasks.findIndex(
+      (task) => task.taskId === taskId
+    );
+
+    db[userIdx].tasks[taskToUpdateId].done = isdone;
+    db[userIdx].tasks[taskToUpdateId].goEditMode = false;
+    writeDb(db);
+
+    
+    return db[userIdx].tasks;
+  } catch (e) {
+    throw new Error(e);
+  }
+};

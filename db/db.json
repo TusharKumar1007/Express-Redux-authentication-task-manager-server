@@ -76,5 +76,14 @@
         "title": "swimming"
       }
     ]
+  },
+  {
+    "id": 1768457904841,
+    "email": "batman@c.com",
+    "userName": "batman",
+    "password": "$2b$12$UnuBh6LqPBwoGq0/YEVb2.1f077CZD5v0LzznNP8BTNYNvpRQ9Qd.",
+    "createdAt": "2026-01-15T06:18:24.841Z",
+    "updatedAt": "2026-01-15T06:18:24.841Z",
+    "tasks": []
   }
 ]
