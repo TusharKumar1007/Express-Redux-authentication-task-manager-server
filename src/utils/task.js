@@ -70,6 +70,7 @@ export const updateMyTask = async (userId, taskId, newTitle) => {
 
     db[userIdx].tasks[taskToUpdateId].title = newTitle;
     db[userIdx].tasks[taskToUpdateId].goEditMode = false;
+    db[userIdx].tasks[taskToUpdateId].updatedAt = new Date().toISOString();
     writeDb(db);
     return db[userIdx].tasks;
   } catch (e) {
@@ -79,8 +80,6 @@ export const updateMyTask = async (userId, taskId, newTitle) => {
 
 export const toggleDone = async (userId, taskId, isdone) => {
   try {
-
-    
     const db = await readDb();
     const userIdx = db.findIndex((user) => user.id === userId);
     const taskToUpdateId = db[userIdx].tasks.findIndex(
@@ -91,7 +90,6 @@ export const toggleDone = async (userId, taskId, isdone) => {
     db[userIdx].tasks[taskToUpdateId].goEditMode = false;
     writeDb(db);
 
-    
     return db[userIdx].tasks;
   } catch (e) {
     throw new Error(e);
