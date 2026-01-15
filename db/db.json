@@ -84,6 +84,15 @@
     "password": "$2b$12$UnuBh6LqPBwoGq0/YEVb2.1f077CZD5v0LzznNP8BTNYNvpRQ9Qd.",
     "createdAt": "2026-01-15T06:18:24.841Z",
     "updatedAt": "2026-01-15T06:18:24.841Z",
-    "tasks": []
+    "tasks": [
+      {
+        "taskId": 1768459453730,
+        "title": "Protect the city",
+        "done": true,
+        "goEditMode": false,
+        "createdAt": "2026-01-15T06:44:13.730Z",
+        "updatedAt": "2026-01-15T06:44:13.730Z"
+      }
+    ]
   }
 ]
