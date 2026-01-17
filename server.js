@@ -14,9 +14,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://react-redux-taskmanager.vercel.app",
+    origin: "https://taskachiver.vercel.app",
     credentials: true,
-  })
+  }),
 );
 
 app.use(express.json());
