@@ -6,8 +6,8 @@ function prepareHabitObj(task) {
     title: task,
     done: false,
     goEditMode: false,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    createdAt: new Date().toString(),
+    updatedAt: new Date().toString(),
   };
 }
 
@@ -49,7 +49,7 @@ export const removeMyTask = async (userId, taskedIdRemoved) => {
     const db = await readDb();
     const userIdx = db.findIndex((user) => user.id === userId);
     const updatedTasks = db[userIdx].tasks.filter(
-      (task) => task.taskId !== taskedIdRemoved
+      (task) => task.taskId !== taskedIdRemoved,
     );
 
     db[userIdx].tasks = updatedTasks;
@@ -65,12 +65,12 @@ export const updateMyTask = async (userId, taskId, newTitle) => {
     const db = await readDb();
     const userIdx = db.findIndex((user) => user.id === userId);
     const taskToUpdateId = db[userIdx].tasks.findIndex(
-      (task) => task.taskId === taskId
+      (task) => task.taskId === taskId,
     );
 
     db[userIdx].tasks[taskToUpdateId].title = newTitle;
     db[userIdx].tasks[taskToUpdateId].goEditMode = false;
-    db[userIdx].tasks[taskToUpdateId].updatedAt = new Date().toISOString();
+    db[userIdx].tasks[taskToUpdateId].updatedAt = new Date().toString();
     writeDb(db);
     return db[userIdx].tasks;
   } catch (e) {
@@ -83,7 +83,7 @@ export const toggleDone = async (userId, taskId, isdone) => {
     const db = await readDb();
     const userIdx = db.findIndex((user) => user.id === userId);
     const taskToUpdateId = db[userIdx].tasks.findIndex(
-      (task) => task.taskId === taskId
+      (task) => task.taskId === taskId,
     );
 
     db[userIdx].tasks[taskToUpdateId].done = isdone;

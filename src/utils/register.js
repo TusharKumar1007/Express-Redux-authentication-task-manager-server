@@ -9,8 +9,8 @@ const prepareUserObj = (userName, password, email) => {
     email: email,
     userName: userName,
     password: password,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    createdAt: new Date().toString(),
+    updatedAt: new Date().toString(),
     tasks: [],
   };
 };

@@ -114,54 +114,21 @@
     ]
   },
   {
-    "id": 1768581304379,
-    "email": "bond@b.com",
-    "userName": "bond",
-    "password": "$2b$12$4NUsWDEPGMFiT72ePC0VS.6Sxj76cE3hyas2H0T78NtiOMf/3SmzO",
-    "createdAt": "2026-01-16T16:35:04.379Z",
-    "updatedAt": "2026-01-16T16:35:04.379Z",
-    "tasks": [
-      {
-        "taskId": 1768581321734,
-        "title": "fun",
-        "done": false,
-        "goEditMode": false,
-        "createdAt": "2026-01-16T16:35:21.734Z",
-        "updatedAt": "2026-01-16T16:35:21.734Z"
-      },
-      {
-        "taskId": 1768581330125,
-        "title": "relax",
-        "done": false,
-        "goEditMode": false,
-        "createdAt": "2026-01-16T16:35:30.125Z",
-        "updatedAt": "2026-01-16T16:35:30.125Z"
-      },
-      {
-        "taskId": 1768581334272,
-        "title": "gun ",
-        "done": false,
-        "goEditMode": false,
-        "createdAt": "2026-01-16T16:35:34.272Z",
-        "updatedAt": "2026-01-16T16:35:34.272Z"
-      },
-      {
-        "taskId": 1768581342288,
-        "title": "shot run have fun rock and roll",
-        "done": false,
-        "goEditMode": false,
-        "createdAt": "2026-01-16T16:35:42.288Z",
-        "updatedAt": "2026-01-16T16:35:42.288Z"
-      }
-    ]
-  },
-  {
-    "id": 1768584628809,
+    "id": 1768631413393,
     "email": "test@t.com",
     "userName": "tester",
-    "password": "$2b$12$ci6cNwODZnWso/NhP8Qz.eQcLFZQvh/l5JY/SybKEY/tOipJrpK4C",
-    "createdAt": "2026-01-16T17:30:28.809Z",
-    "updatedAt": "2026-01-16T17:30:28.809Z",
-    "tasks": []
+    "password": "$2b$12$VeYRaWNxHl9lRG/i91NVGOv.sBKf6MwKCjj5kyx11qoG7BCBDhKMy",
+    "createdAt": "Sat Jan 17 2026 12:00:13 GMT+0530 (India Standard Time)",
+    "updatedAt": "Sat Jan 17 2026 12:00:13 GMT+0530 (India Standard Time)",
+    "tasks": [
+      {
+        "taskId": 1768631791116,
+        "title": "ok now",
+        "done": true,
+        "goEditMode": false,
+        "createdAt": "Sat Jan 17 2026 12:06:31 GMT+0530 (India Standard Time)",
+        "updatedAt": "Sat Jan 17 2026 12:06:57 GMT+0530 (India Standard Time)"
+      }
+    ]
   }
 ]
