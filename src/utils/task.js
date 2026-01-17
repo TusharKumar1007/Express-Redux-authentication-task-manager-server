@@ -1,8 +1,8 @@
 import { readDb, writeDb } from "./readJsonFile.js";
 
-function prepareHabitObj(task) {
+function prepareTaskObj(tId, task) {
   return {
-    taskId: Date.now(),
+    taskId: tId,
     title: task,
     done: false,
     goEditMode: false,
@@ -11,12 +11,12 @@ function prepareHabitObj(task) {
   };
 }
 
-export const addTask = async (id, task) => {
+export const addTask = async (id,tId, task) => {
   try {
     const db = await readDb();
     const index = db.findIndex((user) => user.id === id);
     const { taskId, title, done, goEditMode, createdAt, updatedAt } =
-      prepareHabitObj(task);
+      prepareTaskObj(tId, task);
 
     db[index].tasks.push({
       taskId,
@@ -82,9 +82,12 @@ export const toggleDone = async (userId, taskId, isdone) => {
   try {
     const db = await readDb();
     const userIdx = db.findIndex((user) => user.id === userId);
+    
+    
     const taskToUpdateId = db[userIdx].tasks.findIndex(
       (task) => task.taskId === taskId,
     );
+    
 
     db[userIdx].tasks[taskToUpdateId].done = isdone;
     db[userIdx].tasks[taskToUpdateId].goEditMode = false;

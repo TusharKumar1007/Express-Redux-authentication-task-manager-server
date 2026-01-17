@@ -27,10 +27,11 @@ router.get("/", async (req, res) => {
 router.post("/addTask", async (req, res) => {
   try {
     const { id } = req.user;
-    const { taskTitle } = req.body;
+    const { tId,taskTitle } = req.body;
 
     const { taskId, title, done, goEditMode, createdAt, updatedAt } =
-      await addTask(id, taskTitle);
+      await addTask(id,tId, taskTitle);
+      
 
     if (!taskId) {
       res.status(500).json({ message: "Unable to add habit" });
@@ -49,6 +50,8 @@ router.delete("/removeTask", async (req, res) => {
     const { taskId } = req.body;
 
     const updatedTasks = await removeMyTask(id, taskId);
+
+
 
     res
       .json({
@@ -84,6 +87,7 @@ router.put("/toogleTaskDone", async (req, res) => {
     const { taskId, isdone } = req.body;
     
     const updatedTasks = await toggleDone(id, parseInt(taskId), isdone);
+    
 
     res
       .json({
