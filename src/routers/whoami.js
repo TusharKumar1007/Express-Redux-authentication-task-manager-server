@@ -8,12 +8,14 @@ router.use(authenticateToken);
 
 router.get("/", async (req, res) => {
   try {
-    const { id } = req.user;
+    const { id, user_name: userName } = req.user;
+
+    
     if (!id) {
       res.json({});
       return;
     }
-    const { userName, tasks } = await getMyTasks(id);
+    const { tasks } = await getMyTasks(id);
 
     res.json({ userName, tasks });
   } catch (e) {

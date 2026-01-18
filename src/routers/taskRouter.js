@@ -5,7 +5,7 @@ import {
   getMyTasks,
   removeMyTask,
   updateMyTask,
-  toggleDone
+  toggleDone,
 } from "../utils/task.js";
 
 const router = Router();
@@ -27,11 +27,10 @@ router.get("/", async (req, res) => {
 router.post("/addTask", async (req, res) => {
   try {
     const { id } = req.user;
-    const { tId,taskTitle } = req.body;
+    const { tId, taskTitle } = req.body;
 
     const { taskId, title, done, goEditMode, createdAt, updatedAt } =
-      await addTask(id,tId, taskTitle);
-      
+      await addTask(id, tId, taskTitle);
 
     if (!taskId) {
       res.status(500).json({ message: "Unable to add habit" });
@@ -51,8 +50,6 @@ router.delete("/removeTask", async (req, res) => {
 
     const updatedTasks = await removeMyTask(id, taskId);
 
-
-
     res
       .json({
         message: "updated tasks successfully",
@@ -68,7 +65,7 @@ router.put("/updateTask", async (req, res) => {
   try {
     const { id, user_name } = req.user;
     const { taskId, newTitle } = req.body;
-    const updatedTasks = await updateMyTask(id, parseInt(taskId), newTitle);
+    const updatedTasks = await updateMyTask(id, taskId, newTitle);
 
     res
       .json({
@@ -85,9 +82,8 @@ router.put("/toogleTaskDone", async (req, res) => {
   try {
     const { id, user_name } = req.user;
     const { taskId, isdone } = req.body;
-    
-    const updatedTasks = await toggleDone(id, parseInt(taskId), isdone);
-    
+
+    const updatedTasks = await toggleDone(id, taskId, isdone);
 
     res
       .json({

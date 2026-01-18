@@ -7,6 +7,7 @@ const router = Router();
 
 router.post("/register", async (req, res) => {
   const { userName, password, email } = req.body;
+
   try {
     const { user, token } = await registerUser(userName, password, email);
     addCookie(res, token);
