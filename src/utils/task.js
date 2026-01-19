@@ -69,8 +69,6 @@ export const updateMyTask = async (userId, taskId, newTitle) => {
 
 export const toggleDone = async (userId, taskId, isdone) => {
   try {
-    console.log("ok", taskId, userId, isdone);
-
     await toggleCompleteDb(taskId, userId, isdone);
     const resTasks = await getTasksDb(userId);
     return resTasks;
