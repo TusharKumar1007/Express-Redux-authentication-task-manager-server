@@ -9,8 +9,6 @@ router.use(authenticateToken);
 router.get("/", async (req, res) => {
   try {
     const { id, user_name: userName } = req.user;
-
-    
     if (!id) {
       res.json({});
       return;
