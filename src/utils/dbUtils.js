@@ -39,7 +39,7 @@ export const getUserDb = async (email) => {
 
 export const getTasksDb = async (userId) => {
   try {
-    const query = `SELECT id,task,completed,ineditmode,createdat,updatedat FROM tasks WHERE userid=$1`;
+    const query = `SELECT id,task,completed,ineditmode,createdat,updatedat FROM tasks WHERE userid=$1 ORDER BY createdat`;
     const values = [userId];
     const result = await pool.query(query, values);
     return result.rows;
