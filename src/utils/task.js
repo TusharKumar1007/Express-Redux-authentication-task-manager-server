@@ -20,16 +20,7 @@ function prepareTaskObj(tId, task) {
 
 export const addTask = async (id, tId, task) => {
   try {
-    const {
-      id: taskId,
-      task: title,
-      completed: done,
-      ineditmode: goEditMode,
-      createdat: createdAt,
-      updatedat: updatedAt,
-    } = await addTaskDb(tId, id, task);
-
-    return { taskId, title, done, goEditMode, createdAt, updatedAt };
+    addTaskDb(tId, id, task);
   } catch (e) {
     throw new Error(e);
   }

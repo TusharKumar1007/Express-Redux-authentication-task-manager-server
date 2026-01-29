@@ -10,7 +10,7 @@ export async function loginUser(email, password) {
   if (foundUser) {
     const res = await bcrypt.compare(password, foundUser.password);
     if (!res) {
-      throw new Error("Invalid credientials, Register your self if not");
+      throw new Error("Invalid credientials, Register yourself if not");
     }
 
     const tasks = await getTasksDb(foundUser.id);

@@ -63,7 +63,6 @@ export const addTaskDb = async (taskId, userId, task) => {
     const query = `INSERT INTO tasks(id,userId,task) values($1,$2,$3) returning *`;
     const values = [taskId, userId, task];
     const result = pool.query(query, values);
-    return result.rows[0];
   } catch (e) {
     throw new Error(e.message);
   }

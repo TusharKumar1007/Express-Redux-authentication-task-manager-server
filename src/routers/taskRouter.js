@@ -29,16 +29,16 @@ router.post("/addTask", async (req, res) => {
     const { id } = req.user;
     const { tId, taskTitle } = req.body;
 
-    const { taskId, title, done, goEditMode, createdAt, updatedAt } =
-      await addTask(id, tId, taskTitle);
+    addTask(id, tId, taskTitle);
 
-    if (!taskId) {
-      res.status(500).json({ message: "Unable to add habit" });
-      return;
-    }
+    // if (!taskId) {
+    //   res.status(500).json({ message: "Unable to add habit" });
+    //   return;
+    // }
 
-    res.json({ taskId, title, done, goEditMode, createdAt, updatedAt });
+    res.status(201).json({ message: "added task" });
   } catch (e) {
+    
     res.status(401).json({ error: "bad request" });
   }
 });
